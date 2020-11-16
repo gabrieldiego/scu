@@ -9,6 +9,10 @@ from libtiff import TIFF
 
 import code
 
+def plot(im):
+  plt.imshow(im, cmap='gray', vmin=0, vmax=255)
+  plt.show()
+
 def to8bit(im):
   im8 = numpy.zeros(im.shape[0:2],numpy.uint8)
   
@@ -180,14 +184,12 @@ if(False):
 
   coins_eq = eq_hist(images8[image],coins_nch)
 
-  plt.imshow(coins_eq, cmap='gray', vmin=0, vmax=255)
-  plt.show()
+  plot(coins_eq)
 
   print "Displaying", image, "cumulative histogram after normalization"
 
   plt.plot(histogram(coins_eq)[1])
   plt.show()
-
 
 
 all_images = ['Apple.tif', 'Gearwheel.tif']
@@ -200,8 +202,7 @@ for image in []:
 
   print "Displaying", image, "converted to 8 bit for reference before applying filters"
 
-  plt.imshow(images8[image], cmap='gray', vmin=0, vmax=255)
-  plt.show()
+  plot(images8[image])
     
   for n in f_sizes:
     print "Calculating average", n, "x",n, "of", image, "..."
@@ -210,8 +211,7 @@ for image in []:
 
     print "Displaying average", n, "x",n, "of", image
 
-    plt.imshow(image_ave_nxn, cmap='gray', vmin=0, vmax=255)
-    plt.show()
+    plot(image_ave_nxn)
 
 
     print "Calculating average", n, "x",n, "of", image, "..."
@@ -223,8 +223,7 @@ for image in []:
 
       print "Displaying image with gaussian noise of std dev of ", s
 
-      plt.imshow(image_gauss, cmap='gray', vmin=0, vmax=255)
-      plt.show()
+      plot(image_gauss)
 
       print "Calculating average", n, "x",n, "of", image, "with gaussian noise..."
 
@@ -232,8 +231,7 @@ for image in []:
 
       print "Displaying average", n, "x",n, "of", image, "after gaussian noise applied"
 
-      plt.imshow(image_ave_nxn, cmap='gray', vmin=0, vmax=255)
-      plt.show()
+      plot(image_ave_nxn)
 
 
 for image in all_images:
@@ -242,8 +240,7 @@ for image in all_images:
 
   print "Displaying", image, "converted to 8 bit for reference before applying filters"
 
-  plt.imshow(images8[image], cmap='gray', vmin=0, vmax=255)
-  plt.show()
+  plot(images8[image])
     
   for n in f_sizes:
     print "Calculating sharp", n, "x",n, "of", image, "..."
@@ -252,8 +249,7 @@ for image in all_images:
 
     print "Displaying sharp", n, "x",n, "of", image
 
-    plt.imshow(image_sharp_nxn, cmap='gray', vmin=0, vmax=255)
-    plt.show()
+    plot(image_sharp_nxn)
 
 
     print "Calculating sharp", n, "x",n, "of", image, "..."
@@ -265,8 +261,7 @@ for image in all_images:
 
       print "Displaying image with gaussian noise of std dev of ", s
 
-      plt.imshow(image_gauss, cmap='gray', vmin=0, vmax=255)
-      plt.show()
+      plot(image_gauss)
 
       print "Calculating sharp", n, "x",n, "of", image, "with gaussian noise..."
 
@@ -274,8 +269,7 @@ for image in all_images:
 
       print "Displaying sharp", n, "x",n, "of", image, "after gaussian noise applied"
 
-      plt.imshow(image_sharp_nxn, cmap='gray', vmin=0, vmax=255)
-      plt.show()
+      plot(image_sharp_nxn)
 
 
 
